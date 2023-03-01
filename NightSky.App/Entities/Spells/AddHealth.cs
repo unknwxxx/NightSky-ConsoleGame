@@ -10,7 +10,7 @@ namespace NightSky.App.Entities.Spells
     {
         private int _healthToAdd;
 
-        public AddHealth() : base(0, true, true) { }
+        public AddHealth() : base() { }
 
         public AddHealth(int manaCost, bool verbalComponent, bool motorComponent, int healthToAdd)
        : base(manaCost, verbalComponent, motorComponent)
@@ -20,22 +20,32 @@ namespace NightSky.App.Entities.Spells
 
         public override void ExecuteMagicEffect(Mage? character, int? power)
         {
-            int maxHealthToAdd = RequiredMana / 2; // Максимальное количество здоровья, которое можно добавить за один раз
-
-            if (_healthToAdd > maxHealthToAdd)
+            if(character.MaxMagicalEnergy > RequiredMana)
             {
-                _healthToAdd = maxHealthToAdd;
-            }
-            
-            if(character != null)
-            {
-                character.Config.CurrentHealth += _healthToAdd;
+                int maxHealthToAdd = RequiredMana / 2;
 
-                if (character.Config.CurrentHealth > character.Config.MaxHealth)
+                if (_healthToAdd > maxHealthToAdd)
                 {
-                    character.Config.CurrentHealth = character.Config.MaxHealth;
+                    _healthToAdd = maxHealthToAdd;
+                }
+
+                character.MaxMagicalEnergy -= RequiredMana;
+
+                if (character != null)
+                {
+                    character.Config.CurrentHealth += _healthToAdd;
+
+                    if (character.Config.CurrentHealth > character.Config.MaxHealth)
+                    {
+                        character.Config.CurrentHealth = character.Config.MaxHealth;
+                    }
                 }
             }
+            else
+            {
+                throw new ArgumentException("Not enough mana!!!");
+            }
+
 
         }
     }
