@@ -20,8 +20,8 @@ namespace NightSky.App.Entities
         public override string ToString()
         {
             return
-                $"ID: {Config.Id}, Name: {Config.Name}, State: {Config.State}, Can Talk: {Config.CanTalk}, Can Move: {Config.CanMove}, " +
-                $"Race: {Config.Race}, Gender: {Config.Gender}, Age: {Config.Age}, Health: {Config.CurrentHealth}, Experience: {Config.Experience}";
+                $"ID: {Config.Id}\nName: {Config.Name}\nState: {Config.State}\nCan Talk: {Config.CanTalk}\nCan Move: {Config.CanMove}\n" +
+                $"Race: {Config.Race}\nGender: {Config.Gender}\nAge: {Config.Age}\nHealth: {Config.CurrentHealth}\nExperience: {Config.Experience}";
         }
         public int CompareTo(Player other) => 
             Config.Experience.CompareTo(other.Config.Experience);

@@ -10,7 +10,6 @@ namespace NightSky.App.Entities.Spells
     public class AntidoteSpell : Spell
     {
         public AntidoteSpell() { }
-
         public override void ExecuteMagicEffect(Mage? target = null, int? power = null)
         {
             RequiredMana = 30;
@@ -29,5 +28,6 @@ namespace NightSky.App.Entities.Spells
                     throw new ArgumentException("Character doesn't need healing or too little mana!!!");
                 }
             }
+        }
     }
 }

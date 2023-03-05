@@ -21,6 +21,7 @@ namespace NightSky.App.Entities.Spells
                 {
                     target.Config.State = Enums.State.Weakened;
                     target.CurrentMagicalEnergy -= RequiredMana;
+
                 }
                 else
                 {
