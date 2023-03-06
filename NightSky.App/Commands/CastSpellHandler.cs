@@ -2,4 +2,5 @@
 
 namespace NightSky.App.Commands
 {
+    public delegate void SpellEventArgs();
 }
