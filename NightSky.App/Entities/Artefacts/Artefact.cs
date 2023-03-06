@@ -1,10 +1,12 @@
-﻿using NightSky.App.Interfaces;
-
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace NightSky.App.Entities.Artefacts
 {
-    public abstract class Artefact
+    public class Artefact
     {
-
     }
 }
