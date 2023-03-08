@@ -1,0 +1,32 @@
+[
+  {
+    "Text": "Hello!",
+    "Content": []
+  },
+  {
+    "Text": "Hello!",
+    "Content": []
+  },
+  {
+    "Text": "I have a job for you.",
+    "Content": []
+  },
+  {
+    "Text": "Whats the job?",
+    "Content": []
+  },
+  {
+    "Text": "It is necessary to kill the goblins near the camp. Recently, they began to attack newcomers, so you need to clear their camp as quickly as possible. Are you taking it?",
+    "Content": []
+  },
+  {
+    "Text": "Yes",
+    "Content": [
+      {
+        "Index": 0,
+        "Value": "No",
+        "NextBranch": null
+      }
+    ]
+  }
+]
