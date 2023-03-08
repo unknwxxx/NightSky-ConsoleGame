@@ -18,11 +18,9 @@ var player = new Mage(
     isInvulnerable: false);
 
 
-var spell = new AddHealth();
-spell.SpellCast += SpellCast;
-spell.PerformMagicEffect(player, 10);
 
-void SpellCast(object? sender, SpellEventArgs e)
+using (FileStream fs = new FileStream("D:\\NightSky-ConsoleGame\\NightSky.App\\Files\\test.json",
+         FileMode.Create))
 {
     Console.WriteLine(e.TargetCharacter.Config.IsInvulnerable);
     Console.WriteLine(e.TargetCharacter.CurrentMagicalEnergy);
