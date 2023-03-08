@@ -18,11 +18,3 @@ var player = new Mage(
     isInvulnerable: false);
 
 
-
-using (FileStream fs = new FileStream("D:\\NightSky-ConsoleGame\\NightSky.App\\Files\\test.json",
-         FileMode.Create))
-{
-    Console.WriteLine(e.TargetCharacter.Config.IsInvulnerable);
-    Console.WriteLine(e.TargetCharacter.CurrentMagicalEnergy);
-}
-
