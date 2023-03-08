@@ -1,7 +1,11 @@
-﻿using NightSky.App.Entities;
+﻿using NightSky.App.Entities.DialogTree;
+using System.Text.Json;
 
 DialogTree dialogTree = new DialogTree();
 
-
-
-Console.WriteLine("Hello!");
+using (FileStream fs = new FileStream("D:\\NightSky-ConsoleGame\\NightSky.App\\Files\\test.json",
+         FileMode.Create))
+{
+    JsonSerializer.Serialize(fs, dialogTree.Branches,
+        new JsonSerializerOptions { WriteIndented = true });
+}
