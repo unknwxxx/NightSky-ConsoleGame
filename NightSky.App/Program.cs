@@ -4,4 +4,3 @@
 var player = new Player();
 
 
-Console.WriteLine("Hello!");
