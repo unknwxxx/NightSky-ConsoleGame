@@ -15,6 +15,7 @@ namespace NightSky.App.Models
 
         private bool _canTalk;
         private bool _canMove;
+        private bool _isInvulnerable;
 
         private float _health;
         private readonly float _maxHealth;
@@ -22,7 +23,7 @@ namespace NightSky.App.Models
 
         public PlayerModel() { }
 
-        public PlayerModel(string name, int age, Race race, Gender gender, State state, float maxHealth, float health, bool canTalk, bool canMove)
+        public PlayerModel(string name, int age, Race race, Gender gender, State state, float maxHealth, float health, bool canTalk, bool canMove, bool isInvulnerable)
         {
             _id++;
             _name = name;
@@ -34,6 +35,7 @@ namespace NightSky.App.Models
             _state = state;
             _canTalk = canTalk;
             _canMove = canMove;
+            _isInvulnerable = isInvulnerable;
         }
 
         public int Id => _id;
@@ -56,11 +58,11 @@ namespace NightSky.App.Models
                     _canTalk = false;
                     _canMove = false;
                 }
-                else if (_health >= _maxHealth)
+                else if (_health >= _maxHealth * 0.1)
                 {
                     _state = State.Normal;
                 }
-                else if (_health >= _maxHealth * 0.1)
+                else if (_health <= _maxHealth * 0.1)
                 {
                     _state = State.Weakened;
                 }
@@ -72,5 +74,6 @@ namespace NightSky.App.Models
         }
         public float MaxHealth => _maxHealth;
         public float Experience { get => _experience; set => _experience = value; }
+        public bool IsInvulnerable { get => _isInvulnerable; set => _isInvulnerable = value; }
     }
 }

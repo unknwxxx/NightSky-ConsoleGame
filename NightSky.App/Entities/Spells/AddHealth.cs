@@ -6,47 +6,18 @@ using System.Threading.Tasks;
 
 namespace NightSky.App.Entities.Spells
 {
-    public class AddHealth : Spell
+    internal class AddHealth : Spell
     {
-        private int _healthToAdd;
+        public AddHealth() : base(0, true, true) { }
 
-        public AddHealth() : base() { }
-
-        public AddHealth(int manaCost, bool verbalComponent, bool motorComponent, int healthToAdd)
-       : base(manaCost, verbalComponent, motorComponent)
+        public override void PerformMagicEffect(Mage? character = null, int? power = null)
         {
-            _healthToAdd = healthToAdd;
-        }
+            RequiredMana = power != null ? power.Value * 2 : 0;
 
-        public override void ExecuteMagicEffect(Mage? character, int? power)
-        {
-            if(character.MaxMagicalEnergy > RequiredMana)
-            {
-                int maxHealthToAdd = RequiredMana / 2;
+            var healthToAdd = power != null ? power.Value : character.CurrentMagicalEnergy / 2;
+            character.Config.CurrentHealth += healthToAdd;
 
-                if (_healthToAdd > maxHealthToAdd)
-                {
-                    _healthToAdd = maxHealthToAdd;
-                }
-
-                character.MaxMagicalEnergy -= RequiredMana;
-
-                if (character != null)
-                {
-                    character.Config.CurrentHealth += _healthToAdd;
-
-                    if (character.Config.CurrentHealth > character.Config.MaxHealth)
-                    {
-                        character.Config.CurrentHealth = character.Config.MaxHealth;
-                    }
-                }
-            }
-            else
-            {
-                throw new ArgumentException("Not enough mana!!!");
-            }
-
-
+            base.PerformMagicEffect(character, power);
         }
     }
 }

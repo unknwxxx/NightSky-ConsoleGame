@@ -10,13 +10,16 @@ namespace NightSky.App.Entities
         {
             Config = new PlayerModel();
         }
+        public Player(PlayerModel config)
+        {
+            Config = config;
+        }
         public Player(string name, int age, Race race, Gender gender, State state, float maxHealth, float health, bool canTalk,
-            bool canMove)
+            bool canMove, bool isInvulnerable)
         {
             Config = new PlayerModel(name, age, race,
-                gender, state, maxHealth, health, canTalk, canMove);
+                gender, state, maxHealth, health, canTalk, canMove, isInvulnerable);
         }
-
         public override string ToString()
         {
             return

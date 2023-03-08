@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 
 namespace NightSky.App.Entities.Spells
 {
-    public class AntidoteSpell : Spell
+    public class CastOffSpell : Spell
     {
-        public AntidoteSpell() : base(30, true, true) { }
+        public CastOffSpell()  : base(85, true, true) { }
 
         public override void PerformMagicEffect(Mage? character = null, int? power = null)
         {
-            character.Config.State = character.Config.State == State.Poisoned ?
-               State.Normal : character.Config.State;
+            character.Config.State = character.Config.State == State.Paralyzed ?
+                State.Normal : character.Config.State;
 
+            character.Config.CurrentHealth = 1;
             base.PerformMagicEffect(character, power);
         }
     }
