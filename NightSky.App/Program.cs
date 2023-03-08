@@ -1,6 +1,8 @@
 ﻿using NightSky.App.Entities;
+using NightSky.App.Entities.DialogTree;
 using NightSky.App.Entities.Spells;
 using NightSky.App.Enums;
+using System.Text.Json;
 using System.Timers;
 
 var player = new Mage(
@@ -18,3 +20,14 @@ var player = new Mage(
     isInvulnerable: false);
 
 
+Console.WriteLine(player);
+
+DialogTree dialogTree = new DialogTree();
+
+
+using (FileStream fs = new FileStream("D:\\NightSky-ConsoleGame\\NightSky.App\\Files\\test.json",
+         FileMode.Create))
+{
+    JsonSerializer.Serialize(fs, dialogTree.Branches,
+        new JsonSerializerOptions { WriteIndented = true });
+}

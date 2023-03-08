@@ -31,8 +31,8 @@ namespace NightSky.App.Entities
         }
         public override string ToString()
         {
-            return base.ToString() + "\n" + $"CurrentMagicalEnergy{CurrentMagicalEnergy}" +
-                $"MaxMagicalEnergy{MaxMagicalEnergy}";
+            return base.ToString() + "\n" + $"CurrentMagicalEnergy: {CurrentMagicalEnergy} \n" +
+                $"MaxMagicalEnergy: {MaxMagicalEnergy}";
         }
 
     }
