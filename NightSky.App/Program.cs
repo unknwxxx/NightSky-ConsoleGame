@@ -4,8 +4,6 @@ using NightSky.App.Entities.DialogTree;
 using NightSky.App.Entities.Spells;
 using NightSky.App.Enums;
 using System.Text.Json;
-using System.Timers;
-using static System.Net.Mime.MediaTypeNames;
 
 var player = new Mage(
     name: "Адольф",
@@ -22,20 +20,18 @@ var player = new Mage(
     isInvulnerable: false);
 
 
-
 //var spell = new AddHealth();
 //spell.SpellCast += Spell_SpellCast;
 //spell.PerformMagicEffect(player, 10);
-
 
 //var artifact = new WaterBottle(0, false, 10);
 //artifact.PerformMagicEffect(player);
 //Console.WriteLine(player.Config.CurrentHealth);
 
 
-var smallDeadWaterBottle = new BasiliskEye(10);
-smallDeadWaterBottle.PerformMagicEffect(player);
-Console.WriteLine(player);
+//var smallDeadWaterBottle = new BasiliskEye(10);
+//smallDeadWaterBottle.PerformMagicEffect(player);
+//Console.WriteLine(player);
 
 
 
@@ -45,15 +41,35 @@ Console.WriteLine(player);
 //    Console.WriteLine(e.TargetCharacter.Config.CurrentHealth);
 //}
 
+DialogTree dialogTree = new DialogTree(new Branch());
 
-//DialogTree dialogTree = new DialogTree();
+dialogTree.BranchInfoSaved += (branch) =>
+{
+    using (FileStream fs = new FileStream("D:\\NightSky-ConsoleGame\\NightSky.App\\Files\\test.json",
+         FileMode.Append))
+    {
+        JsonSerializer.Serialize(fs, branch,
+            new JsonSerializerOptions { WriteIndented = true }
+            );
 
-//using (FileStream fs = new FileStream("D:\\NightSky-ConsoleGame\\NightSky.App\\Files\\test.json",
-//         FileMode.Create))
-//{
-//    JsonSerializer.Serialize(fs, dialogTree.Branches,
-//        new JsonSerializerOptions { WriteIndented = true });
-//}
+        fs.Flush();
+
+
+        Console.WriteLine(branch.Text);
+
+        foreach (var item in branch.Content)
+        {
+            Console.WriteLine(item.Index.ToString() + "." + " " + item.Value);
+        }
+
+    }
+};
+
+dialogTree.Root = new Branch("sdfsdf").AddOption("хуй", new Branch("sdf"), 0);
+dialogTree.Root = new Branch("sdfsdsdf");
+dialogTree.Root = new Branch("sdfdsf435");
+
+
 
 
 

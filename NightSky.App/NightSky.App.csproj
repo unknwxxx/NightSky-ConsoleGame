@@ -13,4 +13,8 @@
     <None Remove="Commands\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\Inventory\" />
+  </ItemGroup>
+
 </Project>

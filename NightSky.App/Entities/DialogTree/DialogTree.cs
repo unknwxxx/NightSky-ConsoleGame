@@ -5,7 +5,7 @@
     {
         private Branch _root;
 
-        private List<Branch> _branches;
+        public event Action<Branch> BranchInfoSaved;
 
         public Branch Root
         {
@@ -13,28 +13,22 @@
             set
             {
                 _root = value;
-                _branches.Add(value);
+                BranchInfoSaved?.Invoke(value);
             }
         }
 
-        public List<Branch> Branches 
-        { 
-            get => _branches; 
-            set => _branches = value; 
-        }
+        public DialogTree() => _root = new Branch();
+        public DialogTree(Branch root) => _root = root;
 
-        public DialogTree(Branch root, List<Branch> branches)
+        private void SaveBranchInfo(Branch branch)
         {
-            _root = root;
-            _branches = branches;
+            if(branch != null)
+            {
+                BranchInfoSaved?.Invoke(branch);
+                SaveBranchInfo(branch);
+            }
+            
         }
-
-        public DialogTree()
-        {
-            _root = new Branch();
-            _branches = new List<Branch>();
-        }
-
     }
 }
 
