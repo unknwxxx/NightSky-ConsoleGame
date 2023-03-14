@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NightSky.App.Entities.Artefacts
 {
-    public abstract class Artifact : IMagic
+    public abstract class Artifact : Item, IMagic
     {
         private int _power;
         private bool _renewable;

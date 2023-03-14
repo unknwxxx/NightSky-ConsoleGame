@@ -6,14 +6,16 @@
         private Branch _root;
 
         public event Action<Branch> BranchInfoSaved;
-
         public Branch Root
         {
             get => _root;
             set
             {
-                _root = value;
-                BranchInfoSaved?.Invoke(value);
+                if(_root != value && value != null)
+                {
+                    _root = value;
+                    BranchInfoSaved?.Invoke(value);
+                }
             }
         }
 

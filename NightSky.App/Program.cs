@@ -20,6 +20,15 @@ var player = new Mage(
     isInvulnerable: false);
 
 
+player.Inventory.Add(new LightningStaff(10));
+
+foreach (var item in player.Inventory)
+{
+    Console.WriteLine(item.ID);
+}
+
+
+
 //var spell = new AddHealth();
 //spell.SpellCast += Spell_SpellCast;
 //spell.PerformMagicEffect(player, 10);
@@ -52,24 +61,21 @@ dialogTree.BranchInfoSaved += (branch) =>
             new JsonSerializerOptions { WriteIndented = true }
             );
 
-        fs.Flush();
-
-
         Console.WriteLine(branch.Text);
 
         foreach (var item in branch.Content)
         {
             Console.WriteLine(item.Index.ToString() + "." + " " + item.Value);
         }
-
     }
 };
 
-dialogTree.Root = new Branch("sdfsdf").AddOption("хуй", new Branch("sdf"), 0);
-dialogTree.Root = new Branch("sdfsdsdf");
-dialogTree.Root = new Branch("sdfdsf435");
 
 
 
 
 
+
+
+
+ 

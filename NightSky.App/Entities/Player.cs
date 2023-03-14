@@ -1,24 +1,31 @@
 ﻿using NightSky.App.Enums;
 using NightSky.App.Models;
+using NightSky.App.Entities.Inventory;
 
 namespace NightSky.App.Entities
 {
     public class Player : IComparable<Player>
     {
-        public PlayerModel Config { get; set; }
+        public PlayerModel Config { get; private set; }
+
+        public InventoryComponent Inventory { get; private set; }
+
         public Player()
         {
             Config = new PlayerModel();
+            Inventory = new InventoryComponent();
         }
-        public Player(PlayerModel config)
+        public Player(PlayerModel config, InventoryComponent inventory)
         {
             Config = config;
+            Inventory = inventory;
         }
         public Player(string name, int age, Race race, Gender gender, State state, float maxHealth, float health, bool canTalk,
             bool canMove, bool isInvulnerable)
         {
             Config = new PlayerModel(name, age, race,
                 gender, state, maxHealth, health, canTalk, canMove, isInvulnerable);
+            Inventory = new InventoryComponent();
         }
         public override string ToString()
         {
