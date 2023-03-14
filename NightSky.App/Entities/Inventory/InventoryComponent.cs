@@ -10,6 +10,9 @@ namespace NightSky.App.Entities.Inventory
     public class InventoryComponent : IEnumerable<Item>
     {
         private List<Item> _items;
+
+        public int Count => _items.Count;
+
         public InventoryComponent()
         {
             _items = new List<Item>();
@@ -41,11 +44,6 @@ namespace NightSky.App.Entities.Inventory
                 return _items.Find(predicate);
             else
                 throw new ArgumentNullException();
-        }
-
-        public void Transmit(int index, Player player)
-        {
-            player.Inventory.Add();
         }
 
         public IEnumerator<Item> GetEnumerator()

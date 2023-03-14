@@ -3,6 +3,7 @@
     [Serializable]
     public class Branch
     {
+        public bool IsWaiting { get; private set; }
         public string Text { get; set; }
         public List<Option> Content { get; set; }
 
@@ -26,6 +27,12 @@
             Content = Content.Where((c, i) => i != index).ToList();
             return this;
         }
+
+        public Branch AddWaiting()
+        {
+            IsWaiting = true;
+            return this;
+        } 
     }
 }
 
